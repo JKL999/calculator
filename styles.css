@@ -54,7 +54,10 @@ h1 {
 
 .span-two {
     grid-column: span 2;
-    color: #d6643f;
+}
+
+.equals {
+    background: #d6643f;
     box-shadow: 0px 4px #c3502b;
 }
 
