@@ -128,3 +128,87 @@ deleteButton.addEventListener('click', button => {
     calculator.updateDisplay();
 })
 
+//adding keyboard input functionality
+document.onkeydown = function(event) {
+
+	let key_press = String.fromCharCode(event.keyCode);
+    let key_code = event.keyCode;
+    console.log(key_press);
+    console.log(key_code);
+	// let inputVal = input.innerHTML;
+    let btnVal = this.innerHTML;
+    // let lastChar = inputVal[inputVal.length - 1];
+    // let equation = inputVal;
+	// Using regex to replace all instances of x, ÷, ^ with *, / and ** respectively. 
+	// equation = equation.replace(/x/g, '*').replace(/÷/g, '/').replace(/\^/g, '**');
+
+ // Target each keypress and update the input screen
+  
+    if(key_press==1 || key_press=='a') {
+      calculator.appendNumber(1);
+      calculator.updateDisplay();
+  }
+    if(key_press==2 || key_press=='b') {
+      calculator.appendNumber(2);
+      calculator.updateDisplay();
+  }
+    if(key_press==3 || key_press=='c') {
+      calculator.appendNumber(3);
+      calculator.updateDisplay();
+  }
+    if(key_press==4 || key_press=='d') {
+      calculator.appendNumber(4);
+      calculator.updateDisplay(); 
+  }
+    if(key_press==5 || key_press=='e') {
+      calculator.appendNumber(5);
+      calculator.updateDisplay();
+  }
+    if(key_press==6 && event.shiftKey == false || key_press=='f') {
+      calculator.appendNumber(6);
+      calculator.updateDisplay();
+  }
+    if(key_press==7 || key_press=='g') {
+      calculator.appendNumber(7);
+      calculator.updateDisplay(); 
+  }
+    if(key_press==8 && event.shiftKey == false || key_press=='h') {
+      calculator.appendNumber(8);
+      calculator.updateDisplay();
+  }
+    if(key_press==9 || key_press=='i') {
+      calculator.appendNumber(9);
+      calculator.updateDisplay(); 
+  }
+    if(key_press==0 || key_press=='`') {
+      calculator.appendNumber(0);
+      calculator.updateDisplay();
+  }
+  
+  // Cature operators and prevent from addint two consecutuve operators
+  
+    if ( key_code == 187 && event.shiftKey || (key_code == 107) || (key_code == 61 && event.shiftKey)) {
+        calculator.chooseOperation('+');
+        calculator.updateDisplay();
+  }
+    if (key_code == 189 && event.shiftKey || key_code == 107) {
+        calculator.chooseOperation('-');
+        calculator.updateDisplay();
+  }
+    if ( key_code == 56 && event.shiftKey || key_code == 106) {
+        calculator.chooseOperation('*');
+        calculator.updateDisplay();
+  }
+    if ( key_code == 191 || key_code == 111) {
+        calculator.chooseOperation('÷');
+        calculator.updateDisplay();
+  }
+    if(key_code==13 || key_code==187 && event.shiftKey == false) {
+        calculator.compute();
+        calculator.updateDisplay();
+  }
+    if(key_code==8 || key_code==46) {
+        calculator.delete();
+        calculator.updateDisplay();
+  }
+}
