@@ -129,18 +129,12 @@ deleteButton.addEventListener('click', button => {
 })
 
 //adding keyboard input functionality
-document.onkeydown = function(event) {
+document.addEventListener('keydown', function(event) {
 
 	let key_press = String.fromCharCode(event.keyCode);
     let key_code = event.keyCode;
-    console.log(key_press);
-    console.log(key_code);
-	// let inputVal = input.innerHTML;
-    let btnVal = this.innerHTML;
-    // let lastChar = inputVal[inputVal.length - 1];
-    // let equation = inputVal;
-	// Using regex to replace all instances of x, ÷, ^ with *, / and ** respectively. 
-	// equation = equation.replace(/x/g, '*').replace(/÷/g, '/').replace(/\^/g, '**');
+    console.log("key_press = " + key_press);
+    console.log("key_code = " +key_code);
 
  // Target each keypress and update the input screen
   
@@ -180,7 +174,7 @@ document.onkeydown = function(event) {
       calculator.appendNumber(9);
       calculator.updateDisplay(); 
   }
-    if(key_press==0 || key_press=='`') {
+    if(key_code==48 || key_press=='`') {
       calculator.appendNumber(0);
       calculator.updateDisplay();
   }
@@ -191,7 +185,7 @@ document.onkeydown = function(event) {
         calculator.chooseOperation('+');
         calculator.updateDisplay();
   }
-    if (key_code == 189 && event.shiftKey || key_code == 107) {
+    if (key_code == 189 && event.shiftKey || key_code == 107 || key_code == 109 || key_code ==173) {
         calculator.chooseOperation('-');
         calculator.updateDisplay();
   }
@@ -203,12 +197,12 @@ document.onkeydown = function(event) {
         calculator.chooseOperation('÷');
         calculator.updateDisplay();
   }
-    if(key_code==13 || key_code==187 && event.shiftKey == false) {
+    if(key_code == 13 || key_code == 187 && event.shiftKey == false || key_code == 61 && event.shiftKey == false ) {
         calculator.compute();
         calculator.updateDisplay();
   }
-    if(key_code==8 || key_code==46) {
+    if(key_code == 8 || key_code == 46) {
         calculator.delete();
         calculator.updateDisplay();
-  }
-}
+    }
+})
